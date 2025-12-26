@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom';
-import InPageNavigation from './inPageNavigation';
+import InPageNavigation  from './InPageNavigation';
 
 function Navbar() {
   return (
