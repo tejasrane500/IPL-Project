@@ -4247,8 +4247,8 @@ function Home() {
   }
 
   useEffect(() => {
-    // FetchMatchData();
-    setMatchesData(filterData);
+    FetchMatchData();
+    // setMatchesData(filterData);
   } ,[]);
 
 

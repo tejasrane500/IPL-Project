@@ -995,15 +995,15 @@ function MatchDetail(){
 
 
     useEffect(() => {
-      // FetchMatchDetail();
-      // FetchPlayerData();
+      FetchMatchDetail();
+      FetchPlayerData();
     },[])
 
 
 
-    // if (!data || !player) {
-    //   return <h1>Loading...</h1>;
-    // }
+    if (!data || !player) {
+      return <h1>Loading...</h1>;
+    }
 
 return (
   <>
@@ -1014,7 +1014,7 @@ return (
     >
 
       {/* TEAM 1 PLAYING XI */}
-      {playerData.team1.players[0].player.map(p => (
+      {player.team1.players[0].player.map(p => (
         <div key={p.id} className="text-xl m-5">
           <h1>{p.name}</h1>
           <h3 className="opacity-50 text-sm">{p.role}</h3>
@@ -1022,7 +1022,7 @@ return (
       ))}
 
       {/* TEAM 2 PLAYING XI */}
-      {playerData.team2.players[0].player.map(p => (
+      {player.team2.players[0].player.map(p => (
         <div key={p.id} className="text-xl m-5">
           <h1>{p.name}</h1>
           <h3 className="opacity-50 text-sm">{p.role}</h3>

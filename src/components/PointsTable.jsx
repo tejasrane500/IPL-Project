@@ -1878,8 +1878,8 @@ function PointsTable() {
   }
 
   useEffect(() => {
-    // fetchPointsTable();
-    setTableData(pointsTableData.pointsTable[0].pointsTableInfo);
+    fetchPointsTable();
+    // setTableData(pointsTableData.pointsTable[0].pointsTableInfo);
   }, [])
 
   return (
