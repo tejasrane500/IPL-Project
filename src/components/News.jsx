@@ -238,7 +238,9 @@ function News() {
   "topicName": "Inside Story"
     }
 
-    const [News , setNews] = useState(NewsData.storyList[0].story);
+  const [news , setNews] = useState([]);
+
+  let filterData = NewsData.storyList.filter(singleStory => singleStory.story)
 
     async function FetchNews() {
         const url = 'https://cricbuzz-cricket.p.rapidapi.com/news/v1/topics/349';
@@ -254,20 +256,31 @@ function News() {
             	const response = await fetch(url, options);
             	const result = await response.json();
             	console.log(result);
-                setNews(result.storyList[0].story)
+                setNews(result)
             } catch (error) {
 	        console.error(error);
         }
     }
 
     useEffect(() => {
-        setNews(NewsData.storyList[0].story)
+        setNews(filterData)
     } , [])
 
 
   return (
-    <div>
-        Comming soon ...
+    <div className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2  gap-3 bg-white pt-3 pl-8'>
+        {
+          news.map((NewsData,i) => (
+            <div className='bg-white w-80 p-3 rounded-xl'>
+                <img className='rounded-xl' src={`https://static.cricbuzz.com/a/img/v1/595x396/i1/c${NewsData.story.imageId}/news.jpg`} />
+                <div className='flex flex-col justify-between'>
+                  <h1 className='font-bold text-lg text-black' key={i}>{NewsData.story.hline}</h1>
+                  <p className='text-sm text-gray-600 line-clamp-3'>{NewsData.story.intro}</p>
+                  <p className='text-sm text-black'>Source : {NewsData.story.source}</p>
+                </div>
+            </div>
+          ))
+        }
     </div>
   )
 }
